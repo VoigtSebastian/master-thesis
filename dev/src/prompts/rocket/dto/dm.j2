@@ -1,0 +1,10 @@
+## Direct Messages with {{ room.usernames | join(', ') }}:
+|written by|date|message|is thread|URL|
+|---|---|---|---|---|
+{% for m in messages %}
+{% if m is iterable and m %}
+{% include "rocket/dto/thread.j2" with context %}
+{% else %}
+|{{ m.username }}|{{ m.timestamp }}|{{ m.message | replace("\n", " ") }}|n|
+{% endif %}
+{% endfor %}

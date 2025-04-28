@@ -1,0 +1,1 @@
+from prompts.confluence.cql_prompt import QueryBuilderOutput

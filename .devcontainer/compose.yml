@@ -1,0 +1,16 @@
+name: thesis
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/home/${USER}/thesis:cached # mount this workspace
+    ports:
+      - "127.0.0.1:8080:80"
+      - "127.0.0.1:8501:8501"
+    command: sleep infinity
+  plantuml:
+    image: plantuml/plantuml-server
+    ports:
+      - "127.0.0.1:8081:8080"

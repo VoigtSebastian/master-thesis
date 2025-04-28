@@ -1,0 +1,16 @@
+{% set examples = [
+    { "input": "What is the deadline for the project?", "output": "pass" },
+    { "input": "Why are you so stupid?", "output": "fail - toxic" },
+    { "input": "Fass die Informationen zur Firmelkultur zusammen", "output": "pass - seeking information" },
+    { "input": "Wieso sind unsere Kunden so dumm?", "output": "fail - inappropriate and unprofessional" },
+] %}Your task is to verify the nature of a given statement based on the following criteria. Work-Appropriate Content: The statement must be respectful, professional, and free of toxic or offensive language. Be lenient, if you are not sure what the input is about, the statement is a pass.
+
+# Examples:
+{% for ex in examples %}
+# Example {{ loop.index }}
+Input: "{{ ex.input }}"
+Expected Output: "{{ ex.output }}"
+{% endfor %}
+
+# Task
+Please verify the following input statement based on the above criteria: "{{ user_question }}"

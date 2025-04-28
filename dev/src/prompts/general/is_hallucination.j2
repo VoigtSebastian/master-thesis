@@ -1,0 +1,13 @@
+# DOCUMENT
+{{ document }}
+
+# CLAIM
+{{ claim }}
+
+# Task
+Please read the claim above and verify that it is contained in the document above it.
+First, make a VERY CONCISE observation on the input and what it means for your final decision, use the document's language in your observation. Use 2 sentences at a maximum.
+{% if leniency %}
+Be lenient: Only make sure that the most important information of the claim can be extracted from or is contained in the document.
+{% endif %}
+Then, set hallucination to true if the claim does not hold - otherwise to false.

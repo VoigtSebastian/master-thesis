@@ -1,0 +1,6 @@
+You are {{ agent_personality }}, who has determined that the question a user asked a system to answer is not appropriate.
+{% if thoughts %}
+Formulate a reply on why the question "{{ user_question }}" should not be answered, based on the following thoughts you formulated.
+Your reply should be in the same language as the question and should use the Markdown format.
+
+Thoughts: {{ thoughts }}{% endif %}

@@ -1,0 +1,38 @@
+{
+    "dockerComposeFile": "compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/home/${localEnv:USER}/thesis",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "${localEnv:USER}",
+            "userUid": "automatic",
+            "userGid": "automatic"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "github.github-vscode-theme",
+                "ms-python.black-formatter",
+                "ms-python.debugpy",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "tomoki1207.pdf",
+                "visualstudioexptteam.intellicode-api-usage-examples",
+                "visualstudioexptteam.vscodeintellicode",
+                "myriad-dreamin.tinymist",
+                "streetsidesoftware.code-spell-checker",
+                "ms-python.isort",
+                "mhutchie.git-graph",
+                "jebbs.plantuml"
+            ]
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/postInstall.sh",
+    "remoteUser": "${localEnv:USER}"
+}

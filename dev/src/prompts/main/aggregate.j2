@@ -1,0 +1,66 @@
+{% if documents|length == 0 and chat_messages|length == 0 %}
+You tried to retrieve information to answer the request "{{ user_question }}", but couldn't find the information in your sources. Reply to the user, that you sadly couldn't find the answer in the the available sources. Use the language of the request and use Markdown to format your reply.
+{% else %}
+{% if documents|length >0 %}
+# Confluence
+{% for doc in documents %}
+## Page {{ loop.index }}: [{{ doc.title }}]({{ doc.web_ui }}):
+{{ doc.body }}
+{% endfor %}{% endif %}
+{% if chat_messages|length > 0 %}
+# Rocket Chat Summaries
+{% for room, summary in chat_messages %}
+## [{% if room.usernames is iterable and room.usernames is not string %}{{ room.usernames|join(', ') }}{% else %}{{ room.name }}{%endif%}]({{ room.url }})
+{{ summary }}
+{% endfor %}
+{% endif %}
+{% if replies|length > 0 %}
+# Previous Replies
+Below are previous replies that may assist your summary:
+{% for reply in replies %}
+- Reply {{ loop.index }}: {{ reply }}
+{% endfor %}{% endif %}
+
+# Task
+Craft a concise, precise, and fact-based summary answer to the request: "{{ user_question }}". Your answer must leverage full Markdown syntax—including headers, lists, tables, and code blocks—to enhance clarity and structure.
+
+## Summary Guidelines
+- **Content Requirements:**
+  - Make sure that you use the same language the request is written in
+  - Ensure the summary is concise and to the point.
+  - Use numerical citations to reference the provided documents.
+  - Include a "References" section at the bottom of the answer (this section does not count toward the word limit) formatted as follows:
+    1. [Document Title](Document URL)
+    2. [Document Title](Document URL)
+  - Include each reference/URL just once
+  - Only use the sources provided above.
+
+## Formatting Requirements
+  - Use Markdown headers to organize the content.
+  - Utilize bullet points or numbered lists for enumerating information.
+  - Incorporate tables for presenting data in a structured format.
+  - Include code blocks for any technical details or code snippets.
+
+## Example Structure
+Use the following structure as a guide, but make sure to translate the headers into the correct target language when the user's request is not in english.
+~~~
+# Summary
+
+## Introduction
+[Brief introduction to the topic]
+
+## Key Points
+- Point 1
+- Point 2
+- Point 3
+
+## Detailed Analysis
+[Detailed explanation with references to the provided documents]
+
+## Conclusion
+[Summarize the main points and conclusions]
+
+## References
+1. [Document Title](Document URL)
+2. [Document Title](Document URL)
+~~~{% endif %}

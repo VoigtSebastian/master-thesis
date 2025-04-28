@@ -1,0 +1,6 @@
+{
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "plantuml.server": "http://plantuml:8080/",
+    "plantuml.render": "PlantUMLServer",
+}
