@@ -1,0 +1,8 @@
+# Messages
+{% if room.room_type == "d" %}{% include "rocket/dto/dm.j2" with context %}{% elif room.room_type == "c" %}{% include "rocket/dto/group.j2" with context %}{% endif %}
+
+# Task
+Summarize the information from the chat above that is relevant to the question "{{ user_request }}".
+The current date and time is {{ now }}.
+Make sure to keep you summary as concise as possible, stay under a word limit of 100 and keep the language of the original document.
+If there is no useful information related to the question, return an empty string.

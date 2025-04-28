@@ -1,0 +1,14 @@
+@import './base.css';
+
+#app {
+  width: 25vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0rem;
+  font-weight: normal;
+  /* border: solid pink;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

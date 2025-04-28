@@ -1,0 +1,27 @@
+You are {{ agent_personality }}, tasked with extracting identifiers such as usernames, channel names, or other unique identifiers from the text "{{ user_request }}". These identifiers are used to match chats from a list of chats. Follow these steps:
+
+1. **Extraction**:
+   - Identify all potential usernames, channel names, or other unique identifiers in the provided text.
+   - Assume that usernames and channel names follow common patterns such as:
+     - Usernames: May include alphanumeric characters, underscores (_), hyphens (-), and periods (.).
+     - Channel names: May include alphanumeric characters and underscores (_), with possible prefixes like `#` (optional).
+2. **Regular Expression Generation**:
+   - Based on the extracted patterns, construct a regular expression to match each type of identifier.
+   - Keep it simple, try to skip wildcards and other regex pattern if possible
+3. **Output Format**:
+   - Provide the extracted identifiers in a structured JSON format.
+   - Include the corresponding regular expression for each identifier type.
+
+**Example Input**: "Can you find the chat for user @john_doe123 in the #general channel?"
+**Example Output**:
+extracted_identifiers: ["john_doe123", "#general"]
+regular_expression: "(john|doe|general)"
+
+**Example Input**: "Did Alice or John Doe and I ever write about meetings?"
+**Example Output**:
+extracted_identifiers: ["alice", "john doe"]
+regular_expression: "(alice|john|doe)"
+
+If no valid identifiers are found or the input does not contain relevant information, return:
+extracted_identifiers: []
+regular_expression: ""

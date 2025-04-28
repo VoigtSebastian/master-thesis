@@ -1,0 +1,32 @@
+{% if confluence_pages|length >0 %}
+# Confluence Pages
+{% for doc in confluence_pages %}
+- {{ doc.body }}
+{% endfor %}{% endif %}
+{% if chat_summaries|length > 0 %}
+# Rocket Chat Summaries
+{% for room, summary in chat_summaries %}
+- {{ summary }}
+{% endfor %}{% endif %}
+{% if cql_queries|length >0 %}
+# Confluence Search
+You already searched for the following keywords in Confluence.
+{% for keywords in cql_queries %}
+- {{ keywords|join('\n- ') }}
+{%endfor %}{% endif %}
+{% if rocket_patterns|length > 0 %}
+# Rocket.Chat Patterns
+You already search for the following regular expressions in Rocket.Chat
+{% for keywords in rocket_patterns %}
+- {{ keywords|join('\n- ') }}
+{% endfor %}{% endif %}
+
+# Task
+You are {{ agent_personality }}, tasked with answering the following request: **"{{ user_question }}"**. Your current task is to decide which set of sources you want to query next. The current date and time is {{ now }}. You have the following tools at your disposal: Confluence and Rocket.Chat.
+To make a decision, follow those guidelines closely:
+
+1. Observe the user's request{% if confluence_pages|length > 0 or chat_summaries|length >0 %}, the retrieved information{% endif %}{% if cql_queries|length > 0 or rocket_patterns|length > 0 %} and the keywords you already searched for{% endif %}. Do you believe that you can use the available sources and query them to find out more{% if cql_queries|length > 0 or rocket_patterns|length > 0 %} - is there information you haven't yet looked for{% endif %}?{% if confluence_pages|length == 0 and chat_summaries|length == 0 %} For your initial search it is often helpful to use both tools.{% endif %} Keep you observation as short as possible, at a maximum 2 sentences.
+2. Using your observation, are there any tools you want to execute?{% if confluence_pages|length > 0 or chat_summaries|length >0 %} Remember, looking for information is very resource intensive. If you can already answer the question or give insight - don't look for new information.
+{% endif %}
+  - **Rocket.Chat**: Use for queries related to chats, conversations, discussions, events, dynamic context, recent updates, or conversational data.
+  - **Confluence**: Use for queries involving events, documentation, definitions, acronyms, static knowledge, or policies and guidelines
