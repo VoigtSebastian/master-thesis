@@ -1,6 +1,7 @@
 # Master's Thesis
 
 Welcome to the repository for my master's thesis!
+If you want to make sure you're looking at the code at the time of submission, go to the [submission branch](https://github.com/VoigtSebastian/master-thesis/tree/submission).
 
 This README provides an overview of the project structure and instructions for executing and editing the code.
 
