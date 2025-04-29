@@ -17,8 +17,7 @@ The repository includes the following key components:
 
 Fore more details on the agent's workflow, you can go to [the development README](dev/README.md#workflow).
 
-After I published my findings in the end of April 2025 I will also publish the written thesis in addition to this code.
-The repository may therefore contain references to the `thesis` sub-directory which is currently not yet included.
+I additionally provide the [written submission of my thesis](thesis.pdf) in this repository.
 
 ## Abstract
 In recent years, Large Language Models (LLMs) have gained significant popularity, seamlessly integrating into our daily lives by assisting with a multitude of tasks — from composing emails to providing insightful recommendations.
@@ -38,14 +37,14 @@ To use this easily, install [Docker](https://docs.docker.com/engine/install/) an
 
 1. Open Visual Studio Code in the root of this project.
 2. Open the command palette (`CTRL/CMD+SHIFT+P`) and run `Dev Container: Open Folder in Container`. This will open the container and include the necessary user dependencies.
-3. Proceed to the [development](dev/README.md#TLDR) or [thesis/writing](thesis/README.md#TLDR) README based on your needs.
+3. Proceed to the [development](dev/README.md#TLDR) README.
 
 ## Structure
 
 This repository's main directory is `dev/`, which contains all of the code that was developed as part of my master's thesis.
 The main code can be found in `dev/src/`, where the agent's and infrastructure code is located.
 Additionally, the [agent's frontend](dev/agent-frontend/) and the [questionnaire](dev/questionnaire/) used in the final evaluation are included.
-For more details, have a look at [development README](dev/README.md)
+For more details, have a look at the [development README](dev/README.md).
 
 ```
 .
